@@ -5,7 +5,7 @@ import yaml
 def main():
     yammyfile=open('/home/student/mycode/yamlintor/myYAML.yml','r')
 
-    pyyammy=yaml.load(yammyfile)
+    pyyammy=yaml.load(yammyfile,Loader=yaml.FullLoader)
 
     yammyfile.close()
 

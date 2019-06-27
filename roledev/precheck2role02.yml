@@ -1,0 +1,13 @@
+---
+- name: PLaybook with precheck role
+  hosts: ~^ arista
+
+  tasks:
+  - name: Precheck block
+    block:
+      - name: Import the precheck role
+        import_role:
+          name: sprecheck
+    rescue:
+      - fail:
+         msg: "PRECHECK FAILED! No need to roll back, Exiting."
