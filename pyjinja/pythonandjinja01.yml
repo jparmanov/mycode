@@ -1,0 +1,35 @@
+---
+- name: A play yo play with python
+  hosts: localhost
+
+  vars:
+    test_list:
+      - '192.168.2.1'
+      - '10.10.0.2'
+      - 'host.example.org'
+      - '192.168.70.0/24'
+      - 'fe80::100/10'
+      - True
+      - 'Witcher3 The Wild Hunt'
+      - 'Earl Grey Tea, hot'
+
+
+  tasks:
+  - name: Just wnat the IP
+    debug:
+      msg: "{{test_list|ipaddr}}"
+  - name: spawn rando mac
+    debug:
+      msg: "{{'52:54:00'|random_mac}}"
+  - name: some dont req mustache brackets
+    debug:
+      var: "'52:54:11'|random_mac"
+  - name: Test if our string ends in prise
+    debug:
+      msg: "{{mytest_string.endwith('prise')}}"
+
+  - name: This only prints when this tests true using pyton
+    debug:
+      msg: "Ahh but is it the Enterprise subcalls A,B,C,or D"
+    when: mytest.string.endwith('prise')
+
